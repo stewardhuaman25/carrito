@@ -1,3 +1,8 @@
+<?php
+include("include/conexion.php");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,60 +26,53 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <h4>Registrar Pedidos</h4>
+                    <?php include("include/modal_frm_reg_pedidos.php"); ?>
+                    <table id="basic-datatable" class="table dt-responsive nowrap">
+                                    <thead >
+                                            <th>Nro</th>
+                                            <th>id_cliente</th>
+                                            <th>fecha_hora_pedido</th>
+                                            <th>fecha_entrega</th>
+                                            <th>metodo_pago</th>
+                                            <th>monto</th>
+                                            <th>comprobante</th>
+                                            <th>stock</th>
+                                            <th>estado</th>
+                                           
+                                      
+
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                           
+                                            $consulta = "SELECT * FROM pedidos";
+                                            $ejecutar = mysqli_query($conexion, $consulta);
+                                            $contador=0;
+                                           
+                                            while ($respuesta= mysqli_fetch_array($ejecutar)) {
+                                                $contador += 1;
+                                                echo "<tr>";
+                                                echo "<td>".$contador."</td>";
+                                                echo "<td>".$respuesta['fecha_pedido']."</td>";
+                                                echo "<td>".$respuesta['fecha_entrega']."</td>";
+                                                echo "<td>".$respuesta['stock']."</td>";
+                                                echo "<td>".$respuesta['comprobante']."</td>";
+                                                echo "<td>".$respuesta['estado']."</td>";
+                                            
+                                               
+                                                
+                                                echo "<td><button class='btn btn-success'>Editar</button> <button class='btn btn-danger'>Eliminar</button></td>";
+  
+                                                echo "</tr>";
+                                            }
+
+                                        ?>
+                                    </tbody>
+                                      </table>
+                        
                         <div class="card">
                             <div class="card-body">
-                                <form action="operaciones/registrar_usuario.php" method="POST">
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-md-2 col-sm-12" >Fecha hora de pedido:</label>
-                                        <input type="date" name="fecha_naci" class="form-control col-lg-4 col-md-4 col-sm-12" required>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-md-2 col-sm-12" >Fecha de entrega:</label>
-                                        <input type="date" name="fecha_naci" class="form-control col-lg-4 col-md-4 col-sm-12" required>
-                                    </div>
-
-                                    <!---
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-md-2 col-sm-12" >Metodo de pago:</label>
-                                        <input type="text" name="direccion" class="form-control col-lg-10 col-md-10 col-sm-12" required>
-                                    </div>
-
-                                    --->
-
-
-                                <div class="form-group row">
-                                    <label class="col-lg-2 col-md-2 col-sm-12">Metodo de Pago</label>
-                               
-                                    <select name="stock" class="form-control col-lg-4 col-md-4 col-sm-12" required>
-                                    <option>----Seleccione El metodo de pago----</option>
-                                    <option>BCP</option>
-                                     <option>iNTERBANCK</option>
-                                     <option>BVA</option>
-                                      
-  
-                                      
-                                    </select>
-                                 </div>
-
-
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-md-2 col-sm-12" >Monto:</label>
-                                        <input type="number" name="telefono" class="form-control col-lg-4 col-md-4 col-sm-12" required>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-md-2 col-sm-12" >Comprobante:</label>
-                                        <input type="text" name="direccion" class="form-control col-lg-10 col-md-10 col-sm-12" required>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-md-2 col-sm-12" >Estado:</label>
-                                        <input type="text" name="direccion" class="form-control col-lg-10 col-md-10 col-sm-12" required>
-                                    </div>
-                                    <div class="form-group row">
-                                    <label class="col-lg-2 col-md-2 col-sm-12"></label>
-                                        <button type="submit" class="btn btn-danger">Guardar</button>
-                                    </div>
-                                </form>
+                                
                             </div>
                         </div>
                     </div>

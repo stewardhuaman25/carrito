@@ -1,3 +1,9 @@
+<?php
+include("include/conexion.php");
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,47 +27,59 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <h4>Registrar Productos</h4>
-                        <div class="card">
-                            <div class="card-body">
-                                <form action="operaciones/registrar_productos.php" method="POST"  enctype="multipart/form-data">
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-md-2 col-sm-12" > Codigo: </label>
-                                        <input type="number" name="codigo" class="form-control col-lg-4 col-md-4 col-sm-12" required>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-md-2 col-sm-12" >Descripción:</label>
-                                        <input type="text" name="descripcion" class="form-control col-lg-10 col-md-10 col-sm-12" required>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-md-2 col-sm-12" >Detalle:</label>
-                                        <input type="text" name="detalle" class="form-control col-lg-10 col-md-10 col-sm-12" required>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-md-2 col-sm-12" >Precio de Compra:</label>
-                                        <input type="number" name="precio_compra" class="form-control col-lg-4 col-md-4 col-sm-12" required>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-md-2 col-sm-12" >Precio de Venta:</label>
-                                        <input type="number" name="precio_venta" class="form-control col-lg-4 col-md-4 col-sm-12" required>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-md-2 col-sm-12" >Stock:</label>
-                                        <input type="text" name="stock" class="form-control col-lg-4 col-md-4 col-sm-12" required>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-md-2 col-sm-12" >Estado:</label>
-                                        <input type="text" name="estado" class="form-control col-lg-10 col-md-10 col-sm-12" required>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-2 col-md-2 col-sm-12" >Imagen:</label>
-                                        <input type="file" name="imagen"  required accept="image/*">
-                                    </div>
-                                    <div class="form-group row">
-                                    <label class="col-lg-2 col-md-2 col-sm-12"></label>
-                                        <button type="submit" class="btn btn-success">Guardar</button>
-                                    </div>
-                                </form>
+                    <?php include("include/modal_frm_reg_productos.php"); ?>
+
+                    <table id="basic-datatable" class="table dt-responsive nowrap">
+                                    <thead >
+                                            <th>Nro</th>
+                                            <th>codigo</th>
+                                            <th>descripcion</th>
+                                            <th>detalle</th>
+                                            <th>id_categoria</th>
+                                            <th>precio_compra</th>
+                                            <th>precio_venta</th>
+                                            <th>stock</th>
+                                            <th>estado</th>
+                                            <th>imagen</th>
+                                            <th>id_proveedor</th>
+                                            <th>acciones</th>
+
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                           
+                                            $consulta = "SELECT * FROM producto";
+                                            $ejecutar = mysqli_query($conexion, $consulta);
+                                            $contador=0;
+                                           
+                                            while ($respuesta= mysqli_fetch_array($ejecutar)) {
+                                                $contador += 1;
+                                                echo "<tr>";
+                                                echo "<td>".$contador."</td>";
+                                                echo "<td>".$respuesta['codigo']."</td>";
+                                                echo "<td>".$respuesta['descripcion']."</td>";
+                                                echo "<td>".$respuesta['detalle']."</td>";
+                                                echo "<td>".$respuesta['id_categoria']."</td>";
+                                                echo "<td>".$respuesta['precio_compra']."</td>";
+                                                echo "<td>".$respuesta['precio_venta']."</td>";
+                                                echo "<td>".$respuesta['stock']."</td>";
+                                                echo "<td>".$respuesta['estado']."</td>";
+                                                echo "<td>".$respuesta['imagen']."</td>";
+                                                echo "<td>".$respuesta['id_proveedor']."</td>";
+                                                
+                                                echo "<td><button class='btn btn-success'>Editar</button> <button class='btn btn-danger'>Eliminar</button></td>";
+  
+                                                echo "</tr>";
+                                            }
+
+                                        ?>
+                                    </tbody>
+                                      </table>
+                        
+                               
+
+                                
+                              
                             </div>
                         </div>
                     </div>
