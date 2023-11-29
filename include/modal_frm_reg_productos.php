@@ -39,7 +39,12 @@
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-md-2 col-sm-12" >Estado:</label>
-                                        <input type="text" name="estado" class="form-control col-lg-10 col-md-10 col-sm-12" required>
+                                        <select name="estado" id=""  class="form-control col-lg-10 col-md-10 col-sm-12" required>
+                                            <option value="1">Activo</option>
+                                            <option value="0">Inactivo</option>
+
+                                        </select>
+                                       
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-md-2 col-sm-12" >Imagen:</label>
