@@ -1,8 +1,8 @@
  <!-- Large modal -->
- <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target=".registrar">+ Nuevo</button>
-<h2> lista de clientes</h2>
+ <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target=".cliente">+ Nuevo</button>
 
-<div class="modal fade registrar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+<div class="modal fade cliente" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-md-2 col-sm-12" >razon_social:</label>
-                                        <input type="text" name="telefono" class="form-control col-lg-10 col-md-10 col-sm-12" required>
+                                        <input type="email" name="telefono" class="form-control col-lg-10 col-md-10 col-sm-12" required>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-md-2 col-sm-12" >Telefono:</label>

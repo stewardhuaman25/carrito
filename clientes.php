@@ -36,6 +36,7 @@ include("include/conexion.php");
                                             <th>correo</th>
                                             <th>direccion</th>
                                             <th>direccion_envio</th>
+                                            
                                             <th>acciones</th>
 
                                     </thead>

@@ -16,7 +16,7 @@ $estado=$_POST['estado'];
 
 
 $consulta="INSERT INTO pedidos (id_cliente, fecha_hora_pedido,fecha_entrega,metodo_pago,monto,comprobante,estado)
-VALUES (1,'$fecha_pedido','$fecha_entrega','$metodo_pago','$monto', '$comprobante', '$estado')";
+VALUES (1,'$fecha_pedido','$fecha_entrega','$metodo_pago','$monto', '$comprobante','$estado')";
 
 $ejecutar= mysqli_query($conexion, $consulta);
 

@@ -5,6 +5,7 @@ include("include/conexion.php");
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +14,9 @@ include("include/conexion.php");
     <link href="plantilla/Admin/vertical/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="plantilla/Admin/vertical/assets/css/theme.min.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-    <?php 
+    <?php
     // Lenguaje en php
     include("include/menu.php");
 
@@ -26,53 +28,53 @@ include("include/conexion.php");
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                    <?php include("include/modal_frm_reg_pedidos.php"); ?>
-                    <table id="basic-datatable" class="table dt-responsive nowrap">
-                                    <thead >
-                                            <th>Nro</th>
-                                            <th>id_cliente</th>
-                                            <th>fecha_hora_pedido</th>
-                                            <th>fecha_entrega</th>
-                                            <th>metodo_pago</th>
-                                            <th>monto</th>
-                                            <th>comprobante</th>
-                                            <th>stock</th>
-                                            <th>estado</th>
-                                           
-                                      
+                        <?php include("include/modal_frm_reg_pedidos.php"); ?>
+                        <table id="basic-datatable" class="table dt-responsive nowrap">
+                            <thead>
+                                <th>Nro</th>
+                                <th>id_cliente</th>
+                                <th>fecha_hora_pedido</th>
+                                <th>fecha_entrega</th>
+                                <th>metodo_pago</th>
+                                <th>monto</th>
+                                <th>comprobante</th>
+                                <th>estado</th>
+                                <th>acciones</th>
 
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                           
-                                            $consulta = "SELECT * FROM pedidos";
-                                            $ejecutar = mysqli_query($conexion, $consulta);
-                                            $contador=0;
-                                           
-                                            while ($respuesta= mysqli_fetch_array($ejecutar)) {
-                                                $contador += 1;
-                                                echo "<tr>";
-                                                echo "<td>".$contador."</td>";
-                                                echo "<td>".$respuesta['fecha_pedido']."</td>";
-                                                echo "<td>".$respuesta['fecha_entrega']."</td>";
-                                                echo "<td>".$respuesta['stock']."</td>";
-                                                echo "<td>".$respuesta['comprobante']."</td>";
-                                                echo "<td>".$respuesta['estado']."</td>";
-                                            
-                                               
-                                                
-                                                echo "<td><button class='btn btn-success'>Editar</button> <button class='btn btn-danger'>Eliminar</button></td>";
-  
-                                                echo "</tr>";
-                                            }
 
-                                        ?>
-                                    </tbody>
-                                      </table>
-                        
+
+                            </thead>
+                            <tbody>
+                                <?php
+
+                                $consulta = "SELECT * FROM pedidos";
+                                $ejecutar = mysqli_query($conexion, $consulta);
+                                $contador = 0;
+
+                                while ($respuesta = mysqli_fetch_array($ejecutar)) {
+                                    $contador += 1;
+                                    echo "<tr>";
+                                    echo "<td>" . $contador . "</td>";
+                                    echo "<td>" . $respuesta['id_cliente'] . "</td>";
+                                    echo "<td>" . $respuesta['fecha_hora_pedido'] . "</td>";
+                                    echo "<td>" . $respuesta['fecha_entrega'] . "</td>";
+                                    echo "<td>" . $respuesta['metodo_pago'] . "</td>";
+                                    echo "<td>" . $respuesta['monto'] . "</td>";
+                                    echo "<td>" . $respuesta['comprobante'] . "</td>";
+                                    echo "<td>" . $respuesta['estado'] . "</td>";
+
+                                    echo "<td><button class='btn btn-success'>Editar</button> <button class='btn btn-danger'>Eliminar</button></td>";
+
+                                    echo "</tr>";
+                                }
+
+                                ?>
+                            </tbody>
+                        </table>
+
                         <div class="card">
                             <div class="card-body">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -80,7 +82,7 @@ include("include/conexion.php");
             </div>
         </div>
     </div>
-     <!-- FIN DE CONTENIDO -->
+    <!-- FIN DE CONTENIDO -->
 
 
     <!-- jQuery  -->
