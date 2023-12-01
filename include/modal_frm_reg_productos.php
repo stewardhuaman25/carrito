@@ -19,11 +19,11 @@
                      </div>
                      <div class="form-group row">
                          <label class="col-lg-2 col-md-2 col-sm-12">Descripción:</label>
-                         <input type="text" name="descripcion" class="form-control col-lg-10 col-md-10 col-sm-12" required> 
+                         <input type="text" name="descripcion" class="form-control col-lg-6 col-md-10 col-sm-12" required> 
                      </div>
                      <div class="form-group row">
                          <label class="col-lg-2 col-md-2 col-sm-12">Detalle:</label>
-                         <input type="text" name="detalle" class="form-control col-lg-10 col-md-10 col-sm-12" required>
+                         <input type="text" name="detalle" class="form-control col-lg-6 col-md-10 col-sm-12" required>
                      </div>
                      <div class="form-group row">
                          <label class="col-lg-2 col-md-2 col-sm-12">Precio de Compra:</label>

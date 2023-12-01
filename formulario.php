@@ -54,8 +54,7 @@ include("include/conexion.php");
                                            
                                             $consulta = "SELECT * FROM usuario";
                                             $ejecutar = mysqli_query($conexion, $consulta);
-                                            $contador=0;
-                                           
+                                            $contador=0;                                            
                                             while ($respuesta= mysqli_fetch_array($ejecutar)) {
                                                 $contador += 1;
                                                 echo "<tr>";
@@ -66,8 +65,19 @@ include("include/conexion.php");
                                                 echo "<td>".$respuesta['telefono']."</td>";
                                                 echo "<td>".$respuesta['direccion']."</td>";
                                                 echo "<td>".$respuesta['foto']."</td>";
-                                                echo "<td>".$respuesta['activo']."</td>";
-                                                echo "<td>".$respuesta['id_rol']."</td>";
+                                                $estado=$respuesta['activo'];
+                                                if ($estado==1) {
+                                                    $res = "activo";
+                                                }else {
+                                                    $res="inactivo";
+                                                }
+                                                echo "<td>".$res."</td>";                                                
+                                                $id_rol=$respuesta['id_rol'];
+                                                $sql="SELECT nombre FROM roles WHERE id=$id_rol";
+                                                $ejec=mysqli_query($conexion,$sql);
+                                                $resultado=mysqli_fetch_array($ejec);
+                                               
+                                                echo "<td>".$resultado['nombre']."</td>";
                                                 echo "<td><button class='btn btn-success'>Editar</button> <button class='btn btn-danger'>Eliminar</button></td>";
   
                                                 echo "</tr>";

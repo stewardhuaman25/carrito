@@ -35,13 +35,13 @@ include("include/conexion.php");
                                             <th>codigo</th>
                                             <th>descripcion</th>
                                             <th>detalle</th>
-                                            <th>id_categoria</th>
+                                            <th>categoria</th>
                                             <th>precio_compra</th>
                                             <th>precio_venta</th>
                                             <th>stock</th>
                                             <th>estado</th>
                                             <th>imagen</th>
-                                            <th>id_proveedor</th>
+                                            <th>proveedor</th>
                                             <th>acciones</th>
 
                                     </thead>
@@ -59,13 +59,27 @@ include("include/conexion.php");
                                                 echo "<td>".$respuesta['codigo']."</td>";
                                                 echo "<td>".$respuesta['descripcion']."</td>";
                                                 echo "<td>".$respuesta['detalle']."</td>";
-                                                echo "<td>".$respuesta['id_categoria']."</td>";
+                                                $id_categoria=$respuesta['id_categoria'];
+                                                $sql="SELECT nombre FROM categoria WHERE id=$id_categoria";
+                                                $ejec=mysqli_query($conexion,$sql);
+                                                $resultado=mysqli_fetch_array($ejec);
+                                                echo "<td>".$resultado['nombre']."</td>";
                                                 echo "<td>".$respuesta['precio_compra']."</td>";
                                                 echo "<td>".$respuesta['precio_venta']."</td>";
                                                 echo "<td>".$respuesta['stock']."</td>";
-                                                echo "<td>".$respuesta['estado']."</td>";
+                                                $estado=$respuesta['estado'];
+                                                if ($estado==1) {
+                                                    $res = "activo";
+                                                }else {
+                                                    $res="inactivo";
+                                                }
+                                                echo "<td>".$res."</td>";
                                                 echo "<td>".$respuesta['imagen']."</td>";
-                                                echo "<td>".$respuesta['id_proveedor']."</td>";
+                                                $id_proveedor=$respuesta['id_proveedor'];
+                                                $sql="SELECT razon_social FROM proveedor WHERE id=$id_proveedor";
+                                                $ejec=mysqli_query($conexion,$sql);
+                                                $resultado=mysqli_fetch_array($ejec);
+                                                echo "<td>".$resultado['razon_social']."</td>";
                                                 
                                                 echo "<td><button class='btn btn-success'>Editar</button> <button class='btn btn-danger'>Eliminar</button></td>";
   

@@ -5,12 +5,12 @@ include("../include/conexion.php");
 $codigo=$_POST['codigo'];
 $descripcion=$_POST['descripcion'];
 $detalle=$_POST['detalle'];
-$id_categoria=['categoria'];
+$id_categoria=$_POST['categoria'];
 $precio_compra=$_POST['precio_compra'];
 $precio_venta=$_POST['precio_venta'];
 $stock=$_POST['stock'];
 $estado=$_POST['estado'];
-$id_proveedor=['proveedor'];
+$id_proveedor=$_POST['proveedor'];
 
 
 

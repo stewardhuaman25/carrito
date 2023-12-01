@@ -34,8 +34,8 @@ include("include/conexion.php");
                                             <th>numero_venta</th>
                                             <th>fecha_hora_venta</th>
                                             <th>monto_total</th>
-                                            <th>id_cliente</th>
-                                            <th>id_usuario</th>
+                                            <th>cliente</th>
+                                            <th>usuario</th>
                                             <th>acciones</th>
                                            
 
@@ -55,8 +55,17 @@ include("include/conexion.php");
                                                 echo "<td>".$respuesta['numero_venta']."</td>";
                                                 echo "<td>".$respuesta['fecha_hora_venta']."</td>";
                                                 echo "<td>".$respuesta['monto_total']."</td>";
-                                                echo "<td>".$respuesta['id_cliente']."</td>";
-                                                echo "<td>".$respuesta['id_usuario']."</td>";
+                                                $id_cliente=$respuesta['id_cliente'];
+                                                $sql="SELECT razon_social FROM cliente WHERE id=$id_cliente";
+                                                $ejec=mysqli_query($conexion,$sql);
+                                                $resultado=mysqli_fetch_array($ejec);
+                                                echo "<td>".$resultado['razon_social']."</td>";
+
+                                                $id_usuario=$respuesta['id_usuario'];
+                                                $sql="SELECT apellidos_nombres FROM usuario WHERE id=$id_usuario";
+                                                $ejec=mysqli_query($conexion,$sql);
+                                                $resultado=mysqli_fetch_array($ejec);
+                                                echo "<td>".$resultado['apellidos_nombres']."</td>";
                                    
                                            
                                                 
